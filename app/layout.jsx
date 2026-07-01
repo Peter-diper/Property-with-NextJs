@@ -1,0 +1,24 @@
+import { Inter } from "next/font/google";
+import "@/assets/styles/global.css";
+import Navbar from "@/components/Navbar";
+
+const inter = Inter();
+
+export const metadata = {
+  title: "Property | find the perfect rental",
+  description: " find you dream property",
+  keywords: "rental, find rentals, find property",
+};
+
+const RootLayout = ({ children }) => {
+  return (
+    <html lang="en">
+      <body className={`${inter.className}`}>
+        <Navbar />
+        <div> {children}</div>
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
