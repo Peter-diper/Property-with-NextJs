@@ -1,4 +1,3 @@
-import React, { Children } from "react";
 import InfoBox from "./InfoBox";
 
 const InfoBoxes = () => {
