@@ -2,8 +2,7 @@ import Hero from "@/components/Hero";
 import HomeProperties from "@/components/HomeProperties";
 import InfoBoxes from "@/components/InfoBoxes";
 
-const HomePage = () => {
-  console.log(process.env.MONGODB_URI);
+const HomePage = async () => {
 
   return (
     <>

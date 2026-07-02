@@ -1,9 +1,9 @@
-import properties from "@/properties.json";
+// import properties from "@/properties.json";
 import Link from "next/link";
 import PropertyCard from "./PropertyCard";
 
 const HomeProperties = () => {
-  const recentProperties = properties
+  const recentProperties = []
     // eslint-disable-next-line
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
