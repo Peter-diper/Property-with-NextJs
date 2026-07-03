@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
+
 let connected = false;
-const conncetDB = async () => {
-  mongoose.set("strictQuery", true);
 
-  // I need to say if the data base was connceted, please don't run this
-
+const connectDB = async () => {
+  mongoose.set("strict", true);
   if (connected) {
-    console.log("mongodb is already connected");
+    console.log("data base is connected!");
     return;
   }
+
   try {
-    console.log("connecting to mongodb...");
+    console.log("connecting to database...");
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log("mongodb connected");
+    console.log("data base is connected");
   } catch (error) {
     console.log(error);
   }
 };
 
-export default conncetDB;
+export default connectDB;
