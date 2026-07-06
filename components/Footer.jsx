@@ -13,7 +13,8 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0"></div>
         <div>
           <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; {currentYear} PropertyPulse. All rights reserved.
+            &copy; {currentYear} PropertyPulse. All rights reserved By{" "}
+            <strong>Rasool Fada</strong>.
           </p>
         </div>
       </div>
