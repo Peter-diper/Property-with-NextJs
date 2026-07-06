@@ -5,28 +5,35 @@ const PropertySchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
     name: {
       type: String,
       required: true,
     },
-    descrioption: {
+    type: {
       type: String,
       required: true,
     },
-    loaction: {
+    description: {
+      type: String,
+      required: true,
+    },
+    location: {
       street: {
         type: String,
+        required: true,
       },
       city: {
         type: String,
+        required: true,
       },
       state: {
         type: String,
+        required: true,
       },
       zipcode: {
         type: String,
+        required: true,
       },
     },
     beds: {
@@ -41,19 +48,15 @@ const PropertySchema = new Schema(
       type: Number,
       required: true,
     },
-    amenities: [
-      {
-        type: String,
-      },
-    ],
+    amenities: [{ type: String }],
     rates: {
-      daily: {
-        type: Number,
-      },
       weekly: {
         type: Number,
       },
       monthly: {
+        type: Number,
+      },
+      nightly: {
         type: Number,
       },
     },
@@ -74,7 +77,6 @@ const PropertySchema = new Schema(
     images: [
       {
         type: String,
-        required: true,
       },
     ],
     is_featured: {
@@ -82,10 +84,9 @@ const PropertySchema = new Schema(
       required: true,
     },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
 
 const Property = models.Property || model("Property", PropertySchema);
+
 export default Property;

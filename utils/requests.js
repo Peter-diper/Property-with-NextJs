@@ -1,21 +1,38 @@
 const apiDomain = process.env.NEXT_PUBLIC_DOMAIN_API || null;
 
+//* fetch all properties
 async function fetchProperties() {
   try {
-    // handle the case where the domain is not available yet
+    // if we did not have currect apiDomain dont crash the project!
     if (!apiDomain) return [];
-    // fetching data whent its avilable
+
     const res = await fetch(`${apiDomain}/properties`);
-
     if (!res.ok) {
-      throw new Error("some thing went wrong");
+      throw new Error("could not fetch propeties!");
     }
-    
-
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.log(error);
     return [];
   }
 }
-export { fetchProperties };
+
+//* fetch single Property
+async function fetchProperty(id) {
+  try {
+    // if we did not have currect apiDomain dont crash the project!
+    if (!apiDomain) return null;
+
+    const res = await fetch(`${apiDomain}/properties/${id}`);
+    if (!res.ok) {
+      throw new Error("could not fetch propeties!");
+    }
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+//* exports
+export { fetchProperties, fetchProperty };

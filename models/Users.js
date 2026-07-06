@@ -20,7 +20,6 @@ const UserSchema = new Schema(
         ref: "Property",
       },
     ],
-    D,
   },
   {
     timeseries: true,

@@ -5,10 +5,14 @@ import { fetchProperties } from "@/utils/requests";
 
 const HomeProperties = async () => {
   const properties = await fetchProperties();
-  const recentProperties = [...properties]
-    // eslint-disable-next-line
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 3);
+
+  const recentProperties =
+    [...properties]
+      .sort(
+        // eslint-disable-next-line
+        () => Math.random() - Math.random(),
+      )
+      .slice(0, 3) || [];
 
   return (
     <>
