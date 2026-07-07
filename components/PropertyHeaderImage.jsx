@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 const PropertyHeaderImage = ({ image }) => {
-  console.log(image);
 
   return (
     <section>

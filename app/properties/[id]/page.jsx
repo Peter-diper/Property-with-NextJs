@@ -8,12 +8,13 @@ import Link from "next/link";
 import PropertyDetails from "@/components/PropertyDetails";
 import { FaArrowLeft } from "react-icons/fa";
 import Spinner from "@/components/Spinner";
+import ErrorBlock from "@/components/ErrorBlock";
 
 const PropertyPage = () => {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState({});
+  const [error, setError] = useState();
 
   useEffect(() => {
     const fetchPropertyData = async () => {
@@ -42,6 +43,12 @@ const PropertyPage = () => {
       <h1 className="text-center text-2xl font-bold mt-10">
         Property not Found
       </h1>
+    );
+  }
+
+  if (error) {
+    return (
+      <ErrorBlock message={error.message} title={"some thing bad happend !"} />
     );
   }
 
