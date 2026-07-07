@@ -7,7 +7,7 @@ const UserSchema = new Schema(
       unique: [true, "email already exist"],
       required: [true, "email is requierd"],
     },
-    userName: {
+    username: {
       type: String,
       required: [true, "Username shoul be uniq"],
     },
