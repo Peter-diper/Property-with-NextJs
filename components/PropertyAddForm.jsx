@@ -30,9 +30,55 @@ const PropertyAddForm = () => {
     images: [],
   });
 
-  const handleChange = () => {};
-  const handleAmitiesChange = () => {};
-  const handleImageChange = () => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // check if nested poperty
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+      setFields((prevFields) => ({
+        ...prevFields,
+        [outerKey]: {
+          ...prevFields[outerKey],
+          [innerKey]: value,
+        },
+      }));
+      return;
+    }
+    //Not nested
+    setFields((prevFields) => ({ ...prevFields, [name]: value }));
+  };
+
+  const handleAmitiesChange = (e) => {
+    const { value, checked } = e.target;
+
+    //clone  the current array
+    const updatedAmenities = [...fields.amenities];
+
+    if (checked) {
+      // add value to array
+      updatedAmenities.push(value);
+    } else {
+      // remove value from that array
+      const index = updatedAmenities.indexOf(value);
+      if (index !== -1) {
+        updatedAmenities.splice(index, 1);
+      }
+    }
+
+    setFields((prevFields) => ({ ...prevFields, amenities: updatedAmenities }));
+  };
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+    const updatedImages = [...fields.images];
+
+    // Add new files
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    // Update the state with the new file
+    setFields((prevFields) => ({ ...prevFields, images: updatedImages }));
+  };
 
   return (
     <form>
@@ -200,7 +246,7 @@ const PropertyAddForm = () => {
           <div>
             <input
               type="checkbox"
-              checked={fields.amenities.includes("Kitchen")}
+              checked={fields.amenities.includes("Full Kitchen")}
               onChange={handleAmitiesChange}
               id="amenity_kitchen"
               name="amenities"
