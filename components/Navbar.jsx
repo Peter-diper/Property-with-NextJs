@@ -106,13 +106,15 @@ const Navbar = () => {
                   Object.values(providers).map((provider) => (
                     <button
                       key={provider.id}
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                      className={`flex items-center text-white  hover:bg-gray-900 ${provider.id === "github" ? "bg-gray-950" : "bg-gray-700"} hover:text-white rounded-md px-3 py-2`}
                       onClick={() => signIn(provider.id)}
                     >
                       {provider.id === "google" && (
                         <FaGoogle className="text-white mr-2.5" />
+                      )}{" "}
+                      {provider.id === "github" && (
+                        <FaGithub className="text-white mr-2.5" />
                       )}
-
                       <span>Login or Register</span>
                     </button>
                   ))}
@@ -254,9 +256,15 @@ const Navbar = () => {
               Object.values(providers).map((provider) => (
                 <button
                   key={provider.id}
-                  className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+                  className={`flex items-center text-white  hover:bg-gray-900 ${provider.id === "github" ? "bg-gray-950" : "bg-gray-700"} hover:text-white rounded-md px-3 py-2`}
+                  onClick={() => signIn(provider.id)}
                 >
-                  <FaGoogle className="text-white mr-2.5" />
+                  {provider.id === "google" && (
+                    <FaGoogle className="text-white mr-2.5" />
+                  )}{" "}
+                  {provider.id === "github" && (
+                    <FaGithub className="text-white mr-2.5" />
+                  )}
                   <span>Login or Register</span>
                 </button>
               ))}
