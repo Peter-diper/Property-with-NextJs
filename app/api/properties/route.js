@@ -16,3 +16,11 @@ export const GET = async () => {
     );
   }
 };
+
+export const POST = async () => {
+  try {
+    return NextResponse.json({ message: "Succuess" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json("falied to add property", { status: 500 });
+  }
+};
