@@ -8,13 +8,13 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
+      // authorization: {
+      //   params: {
+      //     prompt: "consent",
+      //     access_type: "offline",
+      //     response_type: "code",
+      //   },
+      // },
     }),
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -33,7 +33,6 @@ export const authOptions = {
       await connectDB();
       const exsistedUser = await User.findOne({
         email: profile.email,
-        username: profile.name,
       });
 
       if (!exsistedUser) {
@@ -48,12 +47,12 @@ export const authOptions = {
 
       return true;
     },
-  },
+    async session({ session }) {
+      await connectDB();
+      const user = await User.findOne({ email: session.user.email });
+      session.user.id = user._id.toString();
 
-  async session({ session }) {
-    await connectDB();
-    const user = await User.findOne({ email: session.user.email });
-    session.user.id = user._id.toString();
-    return session;
+      return session;
+    },
   },
 };

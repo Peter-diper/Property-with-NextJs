@@ -25,7 +25,7 @@ const PropertyAddForm = () => {
     seller_info: {
       name: "",
       email: "test@test.com",
-      phome: "",
+      phone: "",
     },
     images: [],
   });
@@ -526,6 +526,7 @@ const PropertyAddForm = () => {
           type="file"
           id="images"
           name="images"
+          required
           className="border rounded w-full py-2 px-3"
           accept="image/*"
           multiple
