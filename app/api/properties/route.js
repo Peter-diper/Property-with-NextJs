@@ -1,8 +1,7 @@
 import connectDB from "@/config/db";
 import Property from "@/models/Property";
+import { getSessionUser } from "@/utils/getSessionUser";
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/utils/authOptions";
 
 // GET/API/PROPERTIES
 export const GET = async () => {
@@ -22,14 +21,13 @@ export const GET = async () => {
 export const POST = async (request) => {
   try {
     await connectDB();
-
-    const session = await getServerSession(authOptions);
-
-    if (!session) {
-      return NextResponse.json("unauthorized", { status: 401 });
+    const sessionUser = await getSessionUser();
+    if (!sessionUser || !sessionUser.userId) {
+      return NextResponse.json("User ID is requierd", { status: 401 });
     }
 
-    const userId = session.user.id;
+    const { userId } = sessionUser;
+    console.log(userId);
 
     const formData = await request.formData();
 
@@ -69,10 +67,11 @@ export const POST = async (request) => {
       images,
     };
 
-    console.log(propertyData);
-
     return NextResponse.json({}, { status: 200 });
   } catch (error) {
-    return NextResponse.json("falied to add property", { status: 500 });
+    return NextResponse.json(
+      { error: "failed to add property" },
+      { status: 500 },
+    );
   }
 };
