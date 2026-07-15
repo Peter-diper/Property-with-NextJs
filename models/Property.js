@@ -81,7 +81,6 @@ const PropertySchema = new Schema(
     ],
     is_featured: {
       type: Boolean,
-      required: true,
     },
   },
   { timestamps: true },

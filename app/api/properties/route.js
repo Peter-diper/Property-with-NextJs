@@ -27,7 +27,6 @@ export const POST = async (request) => {
     }
 
     const { userId } = sessionUser;
-    console.log(userId);
 
     const formData = await request.formData();
 
@@ -43,6 +42,7 @@ export const POST = async (request) => {
     const propertyData = {
       type: formData.get("type"),
       name: formData.get("name"),
+      description: formData.get("description"),
       location: {
         street: formData.get("location.street"),
         city: formData.get("location.city"),
@@ -64,14 +64,20 @@ export const POST = async (request) => {
         phone: formData.get("seller_info.phone"),
       },
       owner: userId,
-      images,
+      // images,
     };
 
-    return NextResponse.json({}, { status: 200 });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "failed to add property" },
-      { status: 500 },
+    const newProperty = new Property(propertyData);
+    await newProperty.save();
+    console.log(userId);
+
+    return Response.redirect(
+      `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${newProperty._id}`,
+      302,
     );
+
+    // return NextResponse.json({}, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 };
