@@ -69,7 +69,7 @@ export const POST = async (request) => {
       images,
     };
 
-    console.log(userId);
+    console.log(propertyData);
 
     return NextResponse.json({}, { status: 200 });
   } catch (error) {

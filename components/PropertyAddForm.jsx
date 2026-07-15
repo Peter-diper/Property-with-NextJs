@@ -76,7 +76,6 @@ const PropertyAddForm = () => {
       updatedImages.push(file);
     }
 
-    // Update the state with the new file
     setFields((prevFields) => ({ ...prevFields, images: updatedImages }));
   };
 
