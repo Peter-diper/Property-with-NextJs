@@ -54,7 +54,7 @@ export const POST = async (request) => {
       baths: formData.get("baths"),
       square_feet: formData.get("square_feet"),
       amenities,
-      rate: {
+      rates: {
         weekly: formData.get("rates.weekly"),
         monthly: formData.get("rates.monthly"),
         nightly: formData.get("rates.nightly"),
@@ -68,6 +68,30 @@ export const POST = async (request) => {
     };
 
     // Upload images to cloudinary
+
+    const imageUploudPromises = [];
+    for (const image of images) {
+      const imageBuffer = await image.arrayBuffer();
+      const imageArray = Array.from(new Uint8Array(imageBuffer));
+      const imageData = Buffer.from(imageArray);
+
+      // Convert the image data to base 64
+      const imageBase64 = imageData.toString("base64");
+
+      // make requst to upload to cloudinary
+      const result = await cloudinary.uploader.upload(
+        `data:image/png;base64,${imageBase64}`,
+        { folder: "propertypulse" },
+      );
+
+      imageUploudPromises.push(result.secure_url);
+
+      // wait for all images to upload
+      const uploadedImages = await Promise.all(imageUploudPromises);
+
+      // add uploaded images to the propertyData object
+      propertyData.images = uploadedImages;
+    }
 
     const newProperty = new Property(propertyData);
     await newProperty.save();
