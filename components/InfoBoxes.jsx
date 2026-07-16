@@ -21,7 +21,7 @@ const InfoBoxes = () => {
             title={"For Property Owners"}
             buttonInfo={{
               href: "/properties/add",
-              text: "For Renters",
+              text: "For Owners",
               backgroundColor: "bg-blue-500",
             }}
             backgroundColor="bg-blue-100"

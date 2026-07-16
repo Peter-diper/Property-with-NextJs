@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "cloudinary": "^2.10.0",
     "mongodb": "^7.4.0",
     "mongoos": "^0.0.1-security",
     "mongoose": "^9.7.3",

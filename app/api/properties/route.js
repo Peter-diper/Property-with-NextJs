@@ -2,6 +2,7 @@ import connectDB from "@/config/db";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { NextResponse } from "next/server";
+import cloudinary from "@/config/cloudinary";
 
 // GET/API/PROPERTIES
 export const GET = async () => {
@@ -64,8 +65,9 @@ export const POST = async (request) => {
         phone: formData.get("seller_info.phone"),
       },
       owner: userId,
-      // images,
     };
+
+    // Upload images to cloudinary
 
     const newProperty = new Property(propertyData);
     await newProperty.save();
