@@ -17,7 +17,7 @@ const PropertyImages = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={image}
-              className={`${images.length === 3 && index === 2 ? "col-span-2" : "col-span-1"}`}
+              className={`${(index + 1) % 3 === 0 ? "col-span-2" : "col-span-1"} hover:shadow-lg shadow-blue-200 rounded-xl hover:-translate-y-1 transition-all duration-350 ease-out`}
             >
               <Image
                 alt=""
