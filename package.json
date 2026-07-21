@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "node scripts/cli.js",
+    "update": "node scripts/update-readme.js"
   },
   "dependencies": {
     "cloudinary": "^2.10.0",
