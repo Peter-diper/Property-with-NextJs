@@ -8,12 +8,14 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Implemented CRUD operations, Cloudinary image uploads, session-based authentication, and protected API routes
 
 ## ✏️ CRUD Operations
+
 - [x] Deleting Properties
 - [ ] Toast Notifications
 - [ ] Edit Property Form
 - [ ] Update PUT API Route
 
 ## 🗺️ Map, Bookmarks & Sharing
+
 - [ ] Geocoding & Mapbox Map
 - [ ] Handle Geocode Error
 - [x] Property Page Cleanup
@@ -24,9 +26,11 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [ ] Share Buttons
 
 ## 🔍 Property Search
+
 - [ ] Property Search Component
 - [ ] Search API Endpoint
 - [ ] Fetch Results From API
 
 ## 🚧 In Progress
+
 - [ ] Working on adding a gallery image section to the property page
