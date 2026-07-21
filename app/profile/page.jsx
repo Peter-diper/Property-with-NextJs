@@ -16,7 +16,37 @@ const ProfilePage = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const handleDelete = (propertyId) => {};
+  const handleDelete = async (propertyId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this property?",
+    );
+
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/properties/${propertyId}`, {
+        method: "DELETE",
+      });
+
+      console.log(await res.json());
+
+      if (res.status === 200) {
+        // Remove the property from the state
+
+        const updatedProperty = properties.filter(
+          (property) => property._id !== propertyId,
+        );
+        setProperties(updatedProperty);
+
+        alert("property deleted");
+      } else {
+        alert("Failed to delete property");
+      }
+    } catch (error) {
+      alert("Failed to delete property");
+      console.log(error);
+    }
+  };
   useEffect(() => {
     const fetchProperties = async (userId) => {
       if (!userId) {
