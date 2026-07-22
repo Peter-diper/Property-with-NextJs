@@ -3,6 +3,7 @@ import "@/assets/styles/global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter();
 
@@ -20,6 +21,7 @@ const RootLayout = ({ children }) => {
           <Navbar />
           <main className=" h-full min-h-[66vh]"> {children}</main>
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>

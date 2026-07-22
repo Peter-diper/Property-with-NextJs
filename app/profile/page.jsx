@@ -6,6 +6,7 @@ import profileDefault from "@/assets/images/profile.png";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -38,12 +39,12 @@ const ProfilePage = () => {
         );
         setProperties(updatedProperty);
 
-        alert("property deleted");
+        toast.success("Property Deleted");
       } else {
         alert("Failed to delete property");
       }
     } catch (error) {
-      alert("Failed to delete property");
+      toast.error("Failed to delete property");
       console.log(error);
     }
   };
