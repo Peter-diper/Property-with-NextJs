@@ -27,8 +27,8 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 🔍 Property Search
 
-- [ ] Property Search Component
-- [ ] Search API Endpoint
+- [x] Property Search Component
+- [x] Search API Endpoint
 - [ ] Fetch Results From API
 
 ## 🚧 In Progress
