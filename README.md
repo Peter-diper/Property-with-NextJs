@@ -18,7 +18,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 - [ ] Geocoding & Mapbox Map
 - [ ] Handle Geocode Error
-- [x] Property Page Cleanup
+- [ ] Property Page Cleanup
 - [ ] Bookmark API Route
 - [ ] Bookmark Button Request
 - [ ] Bookmark Status & Button Toggle
@@ -30,9 +30,33 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Property Search Component
 - [x] Search API Endpoint
 - [ ] Fetch Results From API
+- [ ] Display Search Results
+
+## 💬 Messaging System
+
+- [ ] Message Model & Form State
+- [ ] Message Submit & API Route
+- [ ] Require Auth For Contact Form
+- [ ] Fetch Messages
+- [ ] Display Messages
+- [ ] Mark As Read
+- [ ] Delete Messages
+- [ ] Order New First
+- [ ] New Message Count Display
+- [ ] Global Context For Unread Messages
+
+## 📄 Pagination, Featured, Lightbox & Deploy
+
+- [ ] Properties Client Component Refactor
+- [ ] Implement Pagination
+- [ ] Pagination Component
+- [ ] Photoswipe Lightbox
+- [ ] Fetch Featured Properties
+- [ ] Featured Property Component
+- [ ] Deploy To Vercel
 
 ## 🚧 In Progress
 
-- [ ] Working on adding a gallery image section to the property page
-
-test
+- [ ] Toast Notifications
+- [ ] Edit Property Form
+- [ ] Update PUT API Route
