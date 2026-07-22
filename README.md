@@ -10,7 +10,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 ## ✏️ CRUD Operations
 
 - [x] Deleting Properties
-- [ ] Toast Notifications
+- [x] Toast Notifications
 - [ ] Edit Property Form
 - [ ] Update PUT API Route
 
@@ -27,8 +27,8 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 🔍 Property Search
 
-- [x] Property Search Component
-- [x] Search API Endpoint
+- [ ] Property Search Component
+- [ ] Search API Endpoint
 - [ ] Fetch Results From API
 - [ ] Display Search Results
 
