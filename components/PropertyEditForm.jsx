@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { fetchProperty } from "@/utils/requests";
+import { toast } from "react-toastify";
 
 const PropertyEditForm = () => {
   const { id } = useParams();
@@ -21,7 +22,6 @@ const PropertyEditForm = () => {
     baths: "",
     square_feet: "",
     amenities: [],
-    rates: {},
     rates: {
       weekly: "",
       monthly: "",
@@ -102,16 +102,35 @@ const PropertyEditForm = () => {
     };
 
     fetchPropertyData();
-  }, [id]);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch(`/api/properties/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (res.status === 200) {
+        router.push(`/properties/${id}`);
+      } else if (res.status === 401 || res.status === 404) {
+        toast.error("premission denied");
+      } else {
+        toast.error("something went wrong");
+      }
+    } catch (error) {
+      toast.error("something went wrong");
+      console.log(error);
+    }
+  };
 
   return (
     mounte &&
     !loading && (
-      <form
-        action="/api/properties"
-        method="post"
-        encType="multipart/form-data"
-      >
+      <form onSubmit={handleSubmit}>
         <h2 className="text-3xl text-center font-semibold mb-6">
           Add Property
         </h2>

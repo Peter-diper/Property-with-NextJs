@@ -12,7 +12,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Deleting Properties
 - [x] Toast Notifications
 - [x] Edit Property Form
-- [ ] Update PUT API Route
+- [x] Update PUT API Route
 
 ## 🗺️ Map, Bookmarks & Sharing
 
