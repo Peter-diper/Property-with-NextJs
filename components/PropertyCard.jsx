@@ -7,6 +7,7 @@ import {
   FaMoneyBill,
   FaMapMarker,
 } from "react-icons/fa";
+import BookmarkButton from "./BookmarkButton";
 
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
@@ -93,6 +94,8 @@ const PropertyCard = ({ property }) => {
 
         <div className="border border-gray-100 mb-5"></div>
 
+        <BookmarkButton property={property} />
+        <br /> 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
             <FaMapMarker className="text-red-700 mt-1" />

@@ -19,9 +19,9 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [ ] Geocoding & Mapbox Map
 - [ ] Handle Geocode Error
 - [x] Property Page Cleanup
-- [ ] Bookmark API Route
-- [ ] Bookmark Button Request
-- [ ] Bookmark Status & Button Toggle
+- [x] Bookmark API Route
+- [x] Bookmark Button Request
+- [x] Bookmark Status & Button Toggle
 - [ ] Saved Properties Page
 - [ ] Share Buttons
 
