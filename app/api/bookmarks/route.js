@@ -48,3 +48,37 @@ export const POST = async (request) => {
     return NextResponse.json("something went wrong", { status: 500 });
   }
 };
+
+//! the plan is to get the properties that are in the User bookmarks collection
+// GET  /api/bookmarks
+export const GET = async () => {
+  try {
+    await connectDB();
+    const userSession = await getSessionUser();
+    if (!userSession || !userSession?.userId) {
+      return NextResponse.json("user id is requierd!");
+    }
+
+    const { userId } = userSession;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return NextResponse.json("user not found");
+    }
+
+    // get user bookmarks
+    const bookmarks = await Property.find({ _id: { $in: user.bookmarks } });
+
+    if (!bookmarks) {
+      return NextResponse.json("something went wrong with the bookmarks", {
+        status: 401,
+      });
+    }
+
+    return NextResponse.json(bookmarks, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse("something went wrong", { status: 500 });
+  }
+};

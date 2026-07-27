@@ -22,7 +22,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Bookmark API Route
 - [x] Bookmark Button Request
 - [x] Bookmark Status & Button Toggle
-- [ ] Saved Properties Page
+- [x] Saved Properties Page
 - [ ] Share Buttons
 
 ## 🔍 Property Search
@@ -79,19 +79,19 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 ## ✏️ عملیات CRUD
 
 - [x] حذف ملک
-- [ ] اعلان‌های Toast
-- [ ] فرم ویرایش ملک
-- [ ] مسیر API به‌روزرسانی (PUT)
+- [x] اعلان‌های Toast
+- [x] فرم ویرایش ملک
+- [x] مسیر API به‌روزرسانی (PUT)
 
 ## 🗺️ نقشه، بوک‌مارک و اشتراک‌گذاری
 
 - [ ] جغرافیاکد و نقشه Mapbox
 - [ ] مدیریت خطای جغرافیاکد
-- [ ] پاک‌سازی صفحه ملک
-- [ ] مسیر API بوک‌مارک
-- [ ] درخواست دکمه بوک‌مارک
-- [ ] وضعیت بوک‌مارک و تغییر دکمه
-- [ ] صفحه ملک‌های ذخیره‌شده
+- [x] پاک‌سازی صفحه ملک
+- [x] مسیر API بوک‌مارک
+- [x] درخواست دکمه بوک‌مارک
+- [x] وضعیت بوک‌مارک و تغییر دکمه
+- [x] صفحه ملک‌های ذخیره‌شده
 - [ ] دکمه‌های اشتراک‌گذاری
 
 ## 🔍 جستجوی ملک

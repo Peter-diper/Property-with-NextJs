@@ -26,7 +26,7 @@ const PropertyCard = ({ property }) => {
       <Image
         src={property.images[0]}
         alt=""
-        className="w-full h-auto rounded-t-xl"
+        className="w-full h-auto rounded-t-xl transition-all duration-200"
         sizes="100vw"
         width={0}
         height={0}
@@ -94,8 +94,8 @@ const PropertyCard = ({ property }) => {
 
         <div className="border border-gray-100 mb-5"></div>
 
-        <BookmarkButton property={property} />
-        <br /> 
+        {/* <BookmarkButton property={property} /> */}
+        <br />
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
             <FaMapMarker className="text-red-700 mt-1" />
