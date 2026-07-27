@@ -1,36 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
 import PropertyCard from "@/components/PropertyCard";
-import Spinner from "@/components/Spinner";
-import { toast } from "react-toastify";
 import PropertyCardSkeleton from "@/components/Propertycardskeleton";
+import useFetchBookMarks from "@/hooks/useFetchBookMarks";
 
 const SavedPropertiesPage = () => {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { loading, properties } = useFetchBookMarks();
   const skcluton = [1, 2, 3, 4];
-
-  useEffect(() => {
-    const fetchSavedProperties = async () => {
-      try {
-        const res = await fetch("/api/bookmarks");
-        if (res.status === 200) {
-          const data = await res.json();
-          setProperties(data);
-        } else {
-          console.log(res.statusText);
-          toast.error("Failed to fetch Saved Properties");
-        }
-      } catch (error) {
-        console.log(error || "Failed to load data");
-        toast.error("Failed to fetch Saved Properties");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSavedProperties();
-  }, []);
 
   if (loading) {
     return (

@@ -66,7 +66,7 @@ const PropertyPage = () => {
 
           {/* back button */}
           <section>
-            <div className="container m-auto py-6 px-6">
+            <div className="container m-auto py-6 px-6 transition-all duration-200">
               <Link
                 href="/properties"
                 className="text-blue-500 hover:text-blue-600 flex items-center"

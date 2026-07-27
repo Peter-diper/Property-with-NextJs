@@ -35,7 +35,7 @@ const ShareButtons = ({ property }) => {
         </TelegramShareButton>
         <EmailShareButton
           url={shareUrl}
-          subject={property.name} 
+          subject={property.name}
           body={`check out this property listing ${shareUrl}`}
         >
           <EmailIcon size={40} round />

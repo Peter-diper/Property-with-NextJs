@@ -94,6 +94,7 @@ const PropertyEditForm = () => {
         }
 
         setFields(propertyData);
+        toast.success("Property Added");
       } catch (error) {
         console.log(error);
       } finally {
@@ -102,7 +103,7 @@ const PropertyEditForm = () => {
     };
 
     fetchPropertyData();
-  }, []);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
