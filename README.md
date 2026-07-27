@@ -23,7 +23,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Bookmark Button Request
 - [x] Bookmark Status & Button Toggle
 - [x] Saved Properties Page
-- [ ] Share Buttons
+- [ ] Share Buttons (Using react share)
 
 ## 🔍 Property Search
 
