@@ -7,11 +7,11 @@ import {
   FaMoneyBill,
   FaMapMarker,
 } from "react-icons/fa";
-import BookmarkButton from "./BookmarkButton";
 
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
     const { rates } = property;
+
     if (rates.monthly) {
       return `${rates.monthly.toLocaleString()}/mo`;
     } else if (rates.weekly) {
