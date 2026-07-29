@@ -1,8 +1,8 @@
 const PropertyCardSkeleton = () => {
   return (
-    <div className="rounded-xl shadow-md relative animate-pulse">
+    <div className="rounded-xl shadow-md relative animate-pulse ">
       {/* Image */}
-      <div className="w-full h-48 bg-gray-300 rounded-t-xl" />
+      <div className="w-full h-84 bg-gray-300 rounded-t-xl " />
 
       <div className="p-4">
         {/* Type + Name */}

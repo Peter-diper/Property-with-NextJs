@@ -27,10 +27,10 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 🔍 Property Search
 
-- [ ] Property Search Component
-- [ ] Search API Endpoint
-- [ ] Fetch Results From API
-- [ ] Display Search Results
+- [x] Property Search Component
+- [x] Search API Endpoint
+- [x] Fetch Results From API
+- [x] Display Search Results
 
 ## 💬 Messaging System
 

@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { signIn, signOut, getProviders, useSession } from "next-auth/react";
+import PropertySearchForm from "./PropertySearchForm";
 
 const Navbar = () => {
   const { data: session, status } = useSession();

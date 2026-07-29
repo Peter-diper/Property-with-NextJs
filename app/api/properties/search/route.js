@@ -14,9 +14,9 @@ export const GET = async (requst) => {
 
     const locationPattern = new RegExp(location, "i");
 
-    // match location pattern agaist database fields
     const typePattern = new RegExp(propertyType, "i");
 
+    // match location pattern agaist database fields
     let query = {
       $or: [
         { name: locationPattern },
