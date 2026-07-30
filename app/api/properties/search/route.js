@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 // GET /api/properties/search
 
-export const GET = async (requst) => {
+export const GET = async (request) => {
   try {
     await connectDB();
 
-    const { searchParams } = new URL(requst.url);
+    const { searchParams } = new URL(request.url);
     const location = searchParams.get("location");
     const propertyType = searchParams.get("propertyType");
 

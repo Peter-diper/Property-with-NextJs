@@ -96,9 +96,9 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 🔍 جستجوی ملک
 
-- [ ] کامپوننت جستجوی ملک
-- [ ] endpoint API جستجو
-- [ ] دریافت نتایج از API
+- [x] کامپوننت جستجوی ملک
+- [x] endpoint API جستجو
+- [x] دریافت نتایج از API
 
 ## 💬 سیستم پیام‌رسانی
 
