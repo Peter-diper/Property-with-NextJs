@@ -20,8 +20,36 @@ const PropertyContactForm = ({ property }) => {
       recipient: property.owner,
       property: property._id,
     };
-    setWasSubmited(true);
-    toast.success("your message was sent");
+
+    try {
+      const res = await fetch("/api/messages", {
+        method: "POST",
+        headers: {
+          ContentType: "aplication/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        toast.success(data.message);
+        setWasSubmited(true);
+      } else if (res.status === 400 || res.status === 401) {
+        const data = await res.json();
+        toast.warn(data.message);
+      } else {
+        console.log(res.statusText);
+        toast.error("Error sending form");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("something went wrong");
+    } finally {
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    }
   };
 
   return (

@@ -67,8 +67,12 @@ export const GET = async () => {
       return NextResponse.json("user not found");
     }
 
-    // get user bookmarks
-    const bookmarks = await Property.find({ _id: { $in: user.bookmarks } });
+    // get Property of the user bookmarks
+    const bookmarks = await Property.find({
+      _id: {
+        $in: user.bookmarks,
+      },
+    });
 
     if (!bookmarks) {
       return NextResponse.json("something went wrong with the bookmarks", {
