@@ -23,7 +23,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] Bookmark Button Request
 - [x] Bookmark Status & Button Toggle
 - [x] Saved Properties Page
-- [ ] Share Buttons (Using react share)
+- [x] Share Buttons (Using react share)
 
 ## 🔍 Property Search
 
@@ -34,8 +34,8 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 💬 Messaging System
 
-- [ ] Message Model & Form State
-- [ ] Message Submit & API Route
+- [x] Message Model & Form State
+- [x] Message Submit & API Route
 - [ ] Require Auth For Contact Form
 - [ ] Fetch Messages
 - [ ] Display Messages
@@ -92,7 +92,7 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 - [x] درخواست دکمه بوک‌مارک
 - [x] وضعیت بوک‌مارک و تغییر دکمه
 - [x] صفحه ملک‌های ذخیره‌شده
-- [ ] دکمه‌های اشتراک‌گذاری
+- [x] دکمه‌های اشتراک‌گذاری
 
 ## 🔍 جستجوی ملک
 
@@ -102,8 +102,8 @@ A full-stack property listing application built with Next.js 15, MongoDB, and Ne
 
 ## 💬 سیستم پیام‌رسانی
 
-- [ ] مدل پیام و وضعیت فرم
-- [ ] ارسال پیام و مسیر API
+- [x] مدل پیام و وضعیت فرم
+- [x] ارسال پیام و مسیر API
 - [ ] نیاز به احراز هویت برای فرم تماس
 - [ ] دریافت پیام‌ها
 - [ ] نمایش پیام‌ها
