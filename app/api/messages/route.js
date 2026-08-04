@@ -23,9 +23,9 @@ export const GET = async (request) => {
 
     const { userId } = userSession;
 
-    const messages = await Message.find({ recipiten: userId })
-      .populate("sender", "name")
-      .populate("property", "title");
+    const messages = await Message.find({ recipient: userId })
+      .populate("sender", "username")
+      .populate("property", "name");
 
     return NextResponse.json(messages, { status: 200 });
   } catch (error) {

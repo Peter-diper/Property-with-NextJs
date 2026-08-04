@@ -29,7 +29,7 @@ export const GET = async (request) => {
       ],
     };
 
-    // only check for property if its not all
+    // only check for property if it's property type is not all
     if (propertyType && propertyType !== "All") {
       query.type = typePattern;
     }
