@@ -46,3 +46,39 @@ export const PUT = async (request, { params }) => {
     return NextResponse.json("something went wrong", { status: 500 });
   }
 };
+
+export const DELETE = async (request, { params }) => {
+  try {
+    await connectDB();
+    const { id } = await params;
+
+    const userSession = await getSessionUser();
+
+    if (!userSession || !userSession?.userId) {
+      return NextResponse.json(
+        { message: "You need to be logged in" },
+        { status: 401 },
+      );
+    }
+
+    const { userId } = userSession;
+
+    const message = await Message.findById(id);
+
+    if (userId.toString() !== message.recipient.toString()) {
+      return NextResponse.json(
+        {
+          message: "You Are Not The owner of This Message",
+        },
+        { status: 401 },
+      );
+    }
+
+    await message.deleteOne();
+
+    return NextResponse.json({ message: "success" }, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json("something went wrong", { status: 500 });
+  }
+};

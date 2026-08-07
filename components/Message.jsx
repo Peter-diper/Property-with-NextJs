@@ -15,6 +15,7 @@ const Message = ({ message }) => {
 
   const [isRead, setIsRead] = useState(message.read);
   const [loading, setLoading] = useState(false);
+  const [delLoading, setDelLoading] = useState(false);
 
   const handleReadClick = async () => {
     try {
@@ -33,6 +34,26 @@ const Message = ({ message }) => {
       toast.error("somethin went wrong");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeleteClick = async (id) => {
+    setDelLoading(true);
+    try {
+      const res = await fetch(`/api/messages/${id}`, { method: "DELETE" });
+      if (res.status === 200) {
+        toast.success("Property Deleted");
+      } else if (
+        res.status.toString().includes("4") ||
+        res.status.toString().includes("5")
+      ) {
+        const data = await res.json();
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setDelLoading(false);
     }
   };
 
@@ -79,7 +100,10 @@ const Message = ({ message }) => {
       >
         {loading ? "loading ..." : isRead ? " Mark IS Read" : " Mark As Read"}
       </button>
-      <button className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md">
+      <button
+        onClick={() => handleDeleteClick(message._id)}
+        className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md"
+      >
         Delete
       </button>
     </div>
