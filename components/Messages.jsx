@@ -24,6 +24,7 @@ const Messages = () => {
     getMessages();
   }, []);
 
+
   return (
     <section className="bg-blue-50">
       <div className="container m-auto py-24 max-w-6xl">

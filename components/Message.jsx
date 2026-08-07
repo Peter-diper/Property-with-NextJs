@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const Message = ({ message }) => {
@@ -16,6 +16,7 @@ const Message = ({ message }) => {
   const [isRead, setIsRead] = useState(message.read);
   const [loading, setLoading] = useState(false);
   const [delLoading, setDelLoading] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleReadClick = async () => {
     try {
@@ -43,6 +44,7 @@ const Message = ({ message }) => {
       const res = await fetch(`/api/messages/${id}`, { method: "DELETE" });
       if (res.status === 200) {
         toast.success("Property Deleted");
+        setIsDeleted(true);
       } else if (
         res.status.toString().includes("4") ||
         res.status.toString().includes("5")
@@ -57,8 +59,14 @@ const Message = ({ message }) => {
     }
   };
 
+  if (isDeleted) {
+    return null;
+  }
+
   return (
-    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
+    <div
+      className={`relative ${delLoading ? "animate-pulse bg-gray-100" : "bg-white"} transition-all duration-150  p-4 rounded-md shadow-md border border-gray-200 `}
+    >
       {!isRead && (
         <div
           className="absolute top-2 right-2
@@ -102,9 +110,9 @@ const Message = ({ message }) => {
       </button>
       <button
         onClick={() => handleDeleteClick(message._id)}
-        className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md"
+        className={`mt-4  text-white py-1 px-3 ${delLoading ? "bg-gray-300 animate-pulse  " : "bg-red-500"} transition-all duration-150 rounded-md`}
       >
-        Delete
+        {delLoading ? "Loading..." : "Delete"}
       </button>
     </div>
   );
