@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { signIn, signOut, getProviders, useSession } from "next-auth/react";
-import PropertySearchForm from "./PropertySearchForm";
+import UnreadMessageCount from "./UnreadMessageCount";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -17,8 +17,6 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
-
-  const profileImage = session?.user.image;
 
   const pathname = usePathname();
 
@@ -100,7 +98,7 @@ const Navbar = () => {
           </div>
 
           {/* <!-- Right Side Menu (Logged Out) --> */}
-          {status !== "authenticated" && (
+          {status !== "loading" && status !== "authenticated" && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center space-x-1">
                 {providers &&
@@ -148,10 +146,9 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                  2
-                  {/* <!-- Replace with the actual number  of notifications --> */}
-                </span>
+
+                {/* notif here */}
+                <UnreadMessageCount session={session} />
               </Link>
               {/* <!-- Profile dropdown button --> */}
               <div className="relative ml-3">
