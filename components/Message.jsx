@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const Message = ({ message }) => {
   const dateOption = new Date(message?.createdAt).toLocaleDateString("US", {
@@ -18,6 +19,8 @@ const Message = ({ message }) => {
   const [delLoading, setDelLoading] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
+  const { setUnreadCount } = useGlobalContext();
+
   const handleReadClick = async () => {
     try {
       setLoading(true);
@@ -28,6 +31,9 @@ const Message = ({ message }) => {
       if (res.status === 200) {
         const { read } = await res.json();
         setIsRead(read);
+        setUnreadCount((prevCounte) =>
+          read ? prevCounte - 1 : prevCounte + 1,
+        );
         toast.success(read ? "Marked As R ead" : "Marked as New");
       }
     } catch (error) {
@@ -45,6 +51,7 @@ const Message = ({ message }) => {
       if (res.status === 200) {
         toast.success("Property Deleted");
         setIsDeleted(true);
+        setUnreadCount((prevCount) => prevCount - 1);
       } else if (
         res.status.toString().includes("4") ||
         res.status.toString().includes("5")

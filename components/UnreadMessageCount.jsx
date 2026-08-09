@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const UnreadMessageCount = ({ session }) => {
-  const [unreadCount, setUnredCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const { unreadCount, setUnreadCount } = useGlobalContext();
 
   useEffect(() => {
     if (!session) {
@@ -17,7 +18,8 @@ const UnreadMessageCount = ({ session }) => {
         const res = await fetch("/api/messages/unread-count");
         if (res.status === 200) {
           const { count } = await res.json();
-          setUnredCount(count);
+          console.log(count);
+          setUnreadCount(count);
         } else {
           const { message } = await res.json();
           toast.error(message);

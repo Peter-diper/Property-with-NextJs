@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "@/assets/styles/global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AuthProvider from "@/components/AuthProvider";
+import Providers from "@/components/Providers";
 import { ToastContainer } from "react-toastify";
 
 const inter = Inter();
@@ -15,7 +15,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <AuthProvider>
+    <Providers>
       <html lang="en">
         <body className={`${inter.className} `}>
           <Navbar />
@@ -24,7 +24,7 @@ const RootLayout = ({ children }) => {
           <ToastContainer />
         </body>
       </html>
-    </AuthProvider>
+    </Providers>
   );
 };
 
