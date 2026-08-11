@@ -16,7 +16,7 @@ const Properties = () => {
           throw new Error("we could not fetch properies");
         }
         const data = await res.json();
-        setProperties(data);
+        setProperties(data.properties);
       } catch (error) {
         console.log(error);
         toast.error("something went wrong");

@@ -5,11 +5,19 @@ import { NextResponse } from "next/server";
 import cloudinary from "@/config/cloudinary";
 
 // GET/API/PROPERTIES
-export const GET = async () => {
+export const GET = async (requset) => {
   try {
     await connectDB();
-    const properties = await Property.find({});
-    return NextResponse.json(properties, { status: 200 });
+
+    const page = requset.nextUrl.searchParams.get("page") || 1;
+    const pageSize = requset.nextUrl.searchParams.get("pageSize") || 3;
+
+    const skip = (page - 1) * pageSize;
+
+    const total = await Property.countDocuments({});
+    const properties = await Property.find({}).skip(skip).limit(pageSize);
+
+    return NextResponse.json({ properties, total }, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json(
