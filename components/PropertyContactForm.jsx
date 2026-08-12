@@ -38,7 +38,6 @@ const PropertyContactForm = ({ property }) => {
         const data = await res.json();
         toast.warn(data.message);
       } else {
-        console.log(res.statusText);
         toast.error("Error sending form");
       }
     } catch (error) {

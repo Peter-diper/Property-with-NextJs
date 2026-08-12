@@ -4,7 +4,7 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
-  
+
 const BookmarkButton = ({ property }) => {
   const { data: session } = useSession();
   const userId = session?.user?.id;
@@ -53,7 +53,6 @@ const BookmarkButton = ({ property }) => {
       if (res.status == 200) {
         const data = await res.json();
         toast.success(data.message);
-        console.log(data);
         setIsBookmarked(data.isBookmarked);
       }
     } catch (error) {
