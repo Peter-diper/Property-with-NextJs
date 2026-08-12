@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
 import { ToastContainer } from "react-toastify";
+import "photoswipe/dist/photoswipe.css";
 
 const inter = Inter();
 
