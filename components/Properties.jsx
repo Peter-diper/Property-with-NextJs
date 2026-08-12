@@ -3,16 +3,18 @@ import { useState, useEffect } from "react";
 import PropertyCard from "./PropertyCard";
 import Spinner from "./Spinner";
 import { toast } from "react-toastify";
+import Pagination from "./Pagination";
 
 const Properties = () => {
-  const [loading, setLoaindg] = useState(true);
+  const [loading, setLoaindg] = useState(false);
   const [properties, setProperties] = useState([]);
-  const [page, setPage] = useState();
-  const [pageSize, setPageSize] = useState(3);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(6);
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     const fetchProperties = async () => {
+      setLoaindg(true);
       try {
         const res = await fetch(
           `/api/properties?page=${page}&pageSize=${pageSize}`,
@@ -22,7 +24,7 @@ const Properties = () => {
         }
         const data = await res.json();
         setProperties(data.properties);
-        setTotalItems(data.totalItems);
+        setTotalItems(data.total);
       } catch (error) {
         console.log(error);
         toast.error("something went wrong");
@@ -32,7 +34,11 @@ const Properties = () => {
     };
 
     fetchProperties();
-  }, []);
+  }, [page, pageSize]);
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
 
   if (loading) {
     return <Spinner />;
@@ -50,6 +56,12 @@ const Properties = () => {
             ))}
           </div>
         )}
+        <Pagination
+          page={page}
+          pageSize={pageSize}
+          totalItems={totalItems}
+          onPageChange={handlePageChange}
+        />
       </div>
     </section>
   );
