@@ -3,6 +3,8 @@ import Link from "next/link";
 import PropertyCard from "./PropertyCard";
 import { fetchProperties } from "@/utils/requests";
 
+export const dynamic = "force-dynamic";
+
 const HomeProperties = async () => {
   const data = await fetchProperties();
 
